@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace CondominiumManager.BLL.Models
 {
@@ -12,6 +10,6 @@ namespace CondominiumManager.BLL.Models
 
         public virtual ICollection<Aluguel> Alugueis { get; set; }
 
-        public virtual ICollection<HistoricoRecurso> HistoricoRecursos { get; set; }
+        public virtual ICollection<HistoricoRecursos> HistoricoRecursos { get; set; }
     }
 }
