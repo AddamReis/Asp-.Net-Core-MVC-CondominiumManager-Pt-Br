@@ -2,6 +2,7 @@ using CondominiumManager.BLL.Models;
 using CondominiumManager.DAL;
 using CondominiumManager.DAL.Interfaces;
 using CondominiumManager.DAL.Repositorios;
+using CondominiumManager.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -28,8 +29,10 @@ namespace CondominiumManager
 
             services.AddAuthentication();
             services.AddAuthorization();
-
-            services.AddTransient<IUsuarioRepositorio, UsuarioRepositorio>();
+            services.ConfigurarRepositorios();
+            services.ConfigurarNomeUsuario();
+            services.ConfigurarSenhaUsuario();
+            services.ConfigurarCookies();
             services.AddControllersWithViews();
         }
 
