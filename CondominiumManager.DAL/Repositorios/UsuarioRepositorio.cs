@@ -44,9 +44,17 @@ namespace CondominiumManager.DAL.Repositorios
             }
         }
 
-        public Task DeslogarUsuario()
+        public async Task DeslogarUsuario()
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _gerenciadorLogin.SignOutAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public async Task IncluirUsuarioEmFuncao(Usuario usuario, string funcao)
@@ -80,14 +88,23 @@ namespace CondominiumManager.DAL.Repositorios
             }
         }
 
+
         public Task<IList<string>> PegarFuncoesUsuario(Usuario usuario)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Usuario> PegarUsuarioPeloEmail(string email)
+        public async Task<Usuario> PegarUsuarioPeloEmail(string email)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _gerenciadorUsuarios.FindByEmailAsync(email);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public Task<Usuario> PegarUsuarioPeloId(string usuarioId)
