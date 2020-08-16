@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace CondominiumManager.DAL.Interface
+namespace CondominiumManager.DAL.Interfaces
 {
     public interface IUsuarioRepositorio : IRepositorioGenerico<Usuario>
     {

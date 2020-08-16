@@ -1,5 +1,5 @@
 ﻿using CondominiumManager.BLL.Models;
-using CondominiumManager.DAL.Interface;
+using CondominiumManager.DAL.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace CondominiumManager.DAL.Repositorio
+namespace CondominiumManager.DAL.Repositorios
 {
     public class UsuarioRepositorio : RepositorioGenerico<Usuario>, IUsuarioRepositorio
     {

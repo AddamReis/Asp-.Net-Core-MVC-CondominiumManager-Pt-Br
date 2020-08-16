@@ -1,10 +1,10 @@
-﻿using CondominiumManager.DAL.Interface;
+﻿using CondominiumManager.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Threading.Tasks;
 
-namespace CondominiumManager.DAL.Repositorio
+namespace CondominiumManager.DAL.Repositorios
 {
     public class RepositorioGenerico<TEntity> : IRepositorioGenerico<TEntity> where TEntity : class
     {

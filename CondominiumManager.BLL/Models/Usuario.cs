@@ -7,8 +7,7 @@ namespace CondominiumManager.BLL.Models
     {
         public string CPF { get; set; }
 
-        public string FOTO { get; set; }
-
+        public string Foto { get; set; }
         public bool PrimeiroAcesso { get; set; }
 
         public StatusConta Status { get; set; }
