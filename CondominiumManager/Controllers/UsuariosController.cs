@@ -26,9 +26,9 @@ namespace CondominiumManager.Controllers
         }
 
         [Authorize(Roles = "Administrador,Sindico")]
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _usuarioRepositorio.PegarTodos());
+            return View();
         }
 
         [HttpGet]
@@ -169,6 +169,13 @@ namespace CondominiumManager.Controllers
             }
 
             return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _usuarioRepositorio.DeslogarUsuario();
+            return RedirectToAction("Login");
         }
     }
 }
