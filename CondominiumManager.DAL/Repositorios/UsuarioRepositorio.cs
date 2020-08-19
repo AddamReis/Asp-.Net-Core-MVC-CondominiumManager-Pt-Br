@@ -96,10 +96,19 @@ namespace CondominiumManager.DAL.Repositorios
         }
 
 
-        public Task<IList<string>> PegarFuncoesUsuario(Usuario usuario)
+        public async Task<IList<string>> PegarFuncoesUsuario(Usuario usuario)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _gerenciadorUsuarios.GetRolesAsync(usuario);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
+
 
         public async Task<Usuario> PegarUsuarioPeloEmail(string email)
         {
@@ -124,9 +133,17 @@ namespace CondominiumManager.DAL.Repositorios
             throw new NotImplementedException();
         }
 
-        public Task<IdentityResult> RemoverFuncoesUsuario(Usuario usuario, IEnumerable<string> funcoes)
+        public async Task<IdentityResult> RemoverFuncoesUsuario(Usuario usuario, IEnumerable<string> funcoes)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _gerenciadorUsuarios.RemoveFromRolesAsync(usuario, funcoes);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public int VerificarSeExisteRegistro()
@@ -142,9 +159,17 @@ namespace CondominiumManager.DAL.Repositorios
             }
         }
 
-        public Task<bool> VerificarSeUsuarioEstaEmFuncao(Usuario usuario, string funcao)
+        public async Task<bool> VerificarSeUsuarioEstaEmFuncao(Usuario usuario, string funcao)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _gerenciadorUsuarios.IsInRoleAsync(usuario, funcao);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }
