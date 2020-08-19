@@ -77,9 +77,17 @@ namespace CondominiumManager.DAL.Repositorios
             }
         }
 
-        public Task<IdentityResult> IncluirUsuarioEmFuncoes(Usuario usuario, IEnumerable<string> funcoes)
+        public async Task<IdentityResult> IncluirUsuarioEmFuncoes(Usuario usuario, IEnumerable<string> funcoes)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _gerenciadorUsuarios.AddToRolesAsync(usuario, funcoes);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public async Task LogarUsuario(Usuario usuario, bool lembrar)
@@ -171,5 +179,6 @@ namespace CondominiumManager.DAL.Repositorios
                 throw ex;
             }
         }
+
     }
 }
