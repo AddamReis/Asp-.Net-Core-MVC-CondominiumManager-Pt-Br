@@ -23,7 +23,7 @@ namespace CondominiumManager.DAL.Repositorios
             try
             {
                 var update = _contexto.Set<TEntity>().Update(entity);
-                update.State = (Microsoft.EntityFrameworkCore.EntityState)EntityState.Modified;
+                update.State = EntityState.Modified;
                 await _contexto.SaveChangesAsync();
             }
             catch (Exception ex)
@@ -126,7 +126,6 @@ namespace CondominiumManager.DAL.Repositorios
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -139,7 +138,6 @@ namespace CondominiumManager.DAL.Repositorios
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }

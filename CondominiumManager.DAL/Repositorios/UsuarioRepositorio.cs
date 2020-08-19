@@ -21,9 +21,16 @@ namespace CondominiumManager.DAL.Repositorios
             _gerenciadorLogin = gerenciadorLogin;
         }
 
-        public Task AtualizarUsuario(Usuario usuario)
+        public async Task AtualizarUsuario(Usuario usuario)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _gerenciadorUsuarios.UpdateAsync(usuario);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public string CodificarSenha(Usuario usuario, string senha)
