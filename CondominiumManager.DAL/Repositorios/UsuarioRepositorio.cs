@@ -131,15 +131,6 @@ namespace CondominiumManager.DAL.Repositorios
             }
         }
 
-        public Task<Usuario> PegarUsuarioPeloId(string usuarioId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Usuario> PegarUsuarioPeloNome(ClaimsPrincipal usuario)
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task<IdentityResult> RemoverFuncoesUsuario(Usuario usuario, IEnumerable<string> funcoes)
         {
@@ -172,6 +163,32 @@ namespace CondominiumManager.DAL.Repositorios
             try
             {
                 return await _gerenciadorUsuarios.IsInRoleAsync(usuario, funcao);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public async Task<Usuario> PegarUsuarioPeloNome(ClaimsPrincipal usuario)
+        {
+            try
+            {
+                return await _gerenciadorUsuarios.FindByNameAsync(usuario.Identity.Name);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public async Task<Usuario> PegarUsuarioPeloId(string usuarioId)
+        {
+            try
+            {
+                return await _gerenciadorUsuarios.FindByIdAsync(usuarioId);
             }
             catch (Exception ex)
             {
