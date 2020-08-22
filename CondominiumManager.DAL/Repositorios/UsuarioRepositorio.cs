@@ -33,11 +33,6 @@ namespace CondominiumManager.DAL.Repositorios
             }
         }
 
-        public string CodificarSenha(Usuario usuario, string senha)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<IdentityResult> CriarUsuario(Usuario usuario, string senha)
         {
             try
@@ -197,5 +192,17 @@ namespace CondominiumManager.DAL.Repositorios
             }
         }
 
+        public string CodificarSenha(Usuario usuario, string senha)
+        {
+            try
+            {
+                return _gerenciadorUsuarios.PasswordHasher.HashPassword(usuario, senha);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

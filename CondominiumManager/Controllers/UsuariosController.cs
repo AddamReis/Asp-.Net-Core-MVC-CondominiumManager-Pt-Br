@@ -145,7 +145,7 @@ namespace CondominiumManager.Controllers
 
                     else if (usuario.PrimeiroAcesso == true)
                     {
-                        return View("RedefinirSenha", usuario);
+                        return RedirectToAction(nameof(RedefinirSenha), usuario);
                     }
 
                     else
@@ -358,5 +358,33 @@ namespace CondominiumManager.Controllers
             return View(viewModel);
         }
 
+        [HttpGet]
+        public IActionResult RedefinirSenha(Usuario usuario)
+        {
+            LoginViewModel model = new LoginViewModel
+            {
+                Email = usuario.Email
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RedefinirSenha(LoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloEmail(model.Email);
+                model.Senha = _usuarioRepositorio.CodificarSenha(usuario, model.Senha);
+                usuario.PasswordHash = model.Senha;
+                usuario.PrimeiroAcesso = false;
+                await _usuarioRepositorio.AtualizarUsuario(usuario);
+                await _usuarioRepositorio.LogarUsuario(usuario, false);
+
+                return RedirectToAction(nameof(MinhasInformacoes));
+            }
+
+            return View(model);
+        }
     }
 }
