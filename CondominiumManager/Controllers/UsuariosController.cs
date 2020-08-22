@@ -343,7 +343,7 @@ namespace CondominiumManager.Controllers
 
                 await _usuarioRepositorio.AtualizarUsuario(usuario);
 
-                TempData["Atualizacao"] = "Registro atualizado";
+                TempData["Atualizacao"] = "Registro atualizado"; //Partial View
 
                 if (await _usuarioRepositorio.VerificarSeUsuarioEstaEmFuncao(usuario, "Administrador") ||
                     await _usuarioRepositorio.VerificarSeUsuarioEstaEmFuncao(usuario, "Sindico"))
