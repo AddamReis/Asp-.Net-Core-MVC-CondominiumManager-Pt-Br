@@ -1,5 +1,6 @@
 ﻿using CondominiumManager.BLL.Models;
 using CondominiumManager.DAL.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace CondominiumManager.Controllers
 {
+    [Authorize(Roles = "Administrador,Sindico")]
     public class AlugueisController : Controller
     {
         private readonly IAluguelRepositorio _aluguelRepositorio;

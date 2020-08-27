@@ -11,10 +11,11 @@ using System.IO;
 using Microsoft.AspNetCore.Http;
 using CondominiumManager.DAL.Interfaces;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CondominiumManager.Controllers
 {
-
+    [Authorize(Roles = "Administrador,Sindico")]
     public class ApartamentosController : Controller
     {
         private readonly IWebHostEnvironment _webHostEnvironment;

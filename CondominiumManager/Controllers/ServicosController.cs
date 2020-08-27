@@ -13,6 +13,7 @@ using CondominiumManager.ViewModels;
 
 namespace CondominiumManager.Controllers
 {
+    [Authorize]
     public class ServicosController : Controller
     {
         private readonly IServicoRepositorio _servicoRepositorio;
@@ -107,6 +108,7 @@ namespace CondominiumManager.Controllers
             return Json("Serviço excluído");
         }
 
+        [Authorize(Roles = "Administrador,Sindico")]
         [HttpGet]
         public async Task<IActionResult> AprovarServico(int id)
         {
@@ -119,7 +121,8 @@ namespace CondominiumManager.Controllers
 
             return View(viewModel);
         }
-         
+
+        [Authorize(Roles = "Administrador,Sindico")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AprovarServico(ServicoAprovadoViewModel viewModel)
@@ -156,7 +159,7 @@ namespace CondominiumManager.Controllers
             return View(viewModel);
         }
 
-
+        [Authorize(Roles = "Administrador,Sindico")]
         public async Task<IActionResult> RecusarServico(int id)
         {
             Servico servico = await _servicoRepositorio.PegarPeloId(id);

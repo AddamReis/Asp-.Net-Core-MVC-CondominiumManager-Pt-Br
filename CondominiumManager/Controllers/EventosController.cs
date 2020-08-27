@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using CondominiumManager.BLL.Models;
 using CondominiumManager.DAL;
 using CondominiumManager.DAL.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CondominiumManager.Controllers
 {
+    [Authorize(Roles = "Administrador,Sindico")]
     public class EventosController : Controller
     {
         private readonly IEventoRepositorio _eventoRepositorio;
